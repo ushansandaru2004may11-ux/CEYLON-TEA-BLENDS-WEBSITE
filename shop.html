@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tea Collection | CEYLON ROYALE - Single Origin & Artisanal Blends</title>
+  <meta name="description" content="Browse our complete collection of pure Ceylon Single Estate Black Teas, Imperial Silver Tips, Kandy Green Teas, and Artisan Spiced Chais.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plantation: {
+              900: '#07211a',
+              800: '#0a2920',
+              700: '#113c2f',
+              600: '#1b5846',
+              500: '#28755e'
+            },
+            ceylongold: {
+              400: '#f5d365',
+              500: '#c59b27',
+              600: '#ab821b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#fbf9f4] text-stone-900 selection:bg-amber-200 selection:text-emerald-950">
+
+  <!-- Top Announcement Bar -->
+  <aside aria-label="Announcement" class="bg-[#07211a] text-amber-200/90 text-xs py-2 px-4 border-b border-amber-900/30">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center">
+      <div class="flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span class="font-medium tracking-wide">COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $50</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span class="text-stone-300">🦁 100% Pure Ceylon Certified</span>
+        <!-- Currency Selector -->
+        <div class="flex items-center gap-1 bg-[#0a2920] px-2 py-0.5 rounded border border-amber-500/20">
+          <span class="text-amber-400 text-xs">🌐</span>
+          <select aria-label="Select currency" class="currency-select bg-transparent text-amber-200 text-xs focus:outline-none cursor-pointer">
+            <option value="USD" class="bg-stone-900 text-white">USD ($)</option>
+            <option value="LKR" class="bg-stone-900 text-white">LKR (Rs.)</option>
+            <option value="EUR" class="bg-stone-900 text-white">EUR (€)</option>
+            <option value="GBP" class="bg-stone-900 text-white">GBP (£)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#0a2920]/95 backdrop-blur-md border-b border-amber-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-stone-300 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 p-0.5 shadow-lg group-hover:scale-105 transition-transform flex items-center justify-center">
+            <div class="w-full h-full rounded-full bg-[#07211a] flex items-center justify-center">
+              <span class="font-serif-luxury font-bold text-amber-300 text-xl">CR</span>
+            </div>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-xl sm:text-2xl font-bold tracking-widest text-amber-200 block">CEYLON ROYALE</span>
+            <span class="text-[10px] tracking-[0.25em] text-amber-400/80 font-medium block uppercase">Single Origin Teas</span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center space-x-8 text-sm tracking-wide font-medium">
+          <a href="index.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Home</a>
+          <a href="shop.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Tea Collection</a>
+          <a href="heritage.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Our Heritage</a>
+          <a href="brewing-guide.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Brewing Guide</a>
+          <a href="contact.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Wholesale & Contact</a>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <button onclick="openSearchModal()" class="p-2 text-stone-300 hover:text-amber-300" title="Search">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </button>
+          <button onclick="openCartDrawer()" class="relative p-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+            <svg class="w-5 h-5 text-stone-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="hidden sm:inline text-xs uppercase tracking-wider font-extrabold text-stone-950">Tea Chest</span>
+            <span class="cart-count-badge hidden absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0a2920]">0</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#07211a] border-b border-amber-500/20 px-6 py-6 space-y-4">
+      <div class="flex justify-between items-center pb-3 border-b border-stone-800">
+        <span class="text-xs uppercase font-bold tracking-widest text-amber-400">Navigation</span>
+        <button id="mobile-menu-close" class="text-stone-400 hover:text-white">✕</button>
+      </div>
+      <a href="index.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Home</a>
+      <a href="shop.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Tea Collection</a>
+      <a href="heritage.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Our Heritage (Story of 1867)</a>
+      <a href="brewing-guide.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Interactive Steep Master</a>
+      <a href="cart.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Shopping Cart & Checkout</a>
+      <a href="contact.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Contact & Wholesale Export</a>
+    </div>
+  </header>
+
+  <!-- Shop Header Banner -->
+  <section class="bg-[#07211a] text-stone-100 py-14 px-4 sm:px-6 lg:px-8 border-b border-amber-500/20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-15">
+      <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=1600&q=80" alt="Ceylon tea leaf" class="w-full h-full object-cover" />
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto text-center">
+      <span class="text-xs uppercase font-bold tracking-[0.25em] text-amber-400 block mb-2">Master Harvest Registry</span>
+      <h1 class="font-serif-luxury text-3xl sm:text-5xl font-bold text-amber-100 mb-4">Artisanal Tea Collection</h1>
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-stone-300 font-light">
+        Single-estate flushes picked with the two-leaves-and-a-bud standard. Discover the nuances of altitude, climate, and orthodox Ceylon manufacturing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter & Catalog Main Area -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- Filter Control Bar -->
+    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm mb-8 space-y-4">
+      
+      <!-- Category Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-semibold" id="category-filter-pills">
+        <button onclick="setFilter('category', 'all')" data-cat="all" class="filter-pill active px-4 py-2 rounded-xl bg-[#0a2920] text-amber-300 shadow transition-all whitespace-nowrap">
+          All Teas (10)
+        </button>
+        <button onclick="setFilter('category', 'black')" data-cat="black" class="filter-pill px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all whitespace-nowrap">
+          Black Tea
+        </button>
+        <button onclick="setFilter('category', 'white')" data-cat="white" class="filter-pill px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all whitespace-nowrap">
+          Silver & White Tips
+        </button>
+        <button onclick="setFilter('category', 'green')" data-cat="green" class="filter-pill px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all whitespace-nowrap">
+          Green Tea
+        </button>
+        <button onclick="setFilter('category', 'spiced')" data-cat="spiced" class="filter-pill px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all whitespace-nowrap">
+          Spiced Chai
+        </button>
+        <button onclick="setFilter('category', 'herbal')" data-cat="herbal" class="filter-pill px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all whitespace-nowrap">
+          Herbal & Flavored
+        </button>
+        <button onclick="setFilter('category', 'gift')" data-cat="gift" class="filter-pill px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 transition-all whitespace-nowrap">
+          Luxury Gift Chests
+        </button>
+      </div>
+
+      <!-- Secondary Controls: Terroir & Sort -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-3 border-t border-stone-100 text-xs">
+        
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Elevation Filter Dropdown -->
+          <div class="flex items-center gap-1.5">
+            <span class="text-stone-500 font-semibold uppercase">Elevation:</span>
+            <select id="elevation-select" onchange="setElevationFilter(this.value)" class="bg-stone-50 border border-stone-200 rounded-lg px-2.5 py-1.5 text-stone-700 focus:outline-none focus:border-amber-500 font-medium">
+              <option value="all">All Terroirs</option>
+              <option value="high">High Grown (4,000 - 6,200ft)</option>
+              <option value="mid">Mid Grown (2,000 - 4,000ft)</option>
+              <option value="low">Low Grown (Sea Level - 2,000ft)</option>
+            </select>
+          </div>
+
+          <!-- In Stock Only Toggle -->
+          <label class="flex items-center gap-2 cursor-pointer text-stone-600 font-medium select-none">
+            <input type="checkbox" id="stock-toggle" onchange="toggleInStock(this.checked)" class="rounded text-emerald-800 focus:ring-emerald-700" />
+            <span>In Stock Only</span>
+          </label>
+        </div>
+
+        <!-- Sort by -->
+        <div class="flex items-center justify-between sm:justify-end gap-3">
+          <span id="results-count" class="text-stone-500 font-medium">Showing 10 Blends</span>
+          <div class="flex items-center gap-1.5">
+            <span class="text-stone-500 font-semibold uppercase">Sort:</span>
+            <select id="sort-select" onchange="setSort(this.value)" class="bg-stone-50 border border-stone-200 rounded-lg px-2.5 py-1.5 text-stone-700 focus:outline-none focus:border-amber-500 font-medium">
+              <option value="featured">Featured / Master Picks</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Catalog Product Grid -->
+    <div id="catalog-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Populated dynamically via JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="catalog-empty-state" class="hidden py-16 text-center bg-white rounded-2xl border border-stone-200 p-8">
+      <div class="w-16 h-16 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+        🍂
+      </div>
+      <h3 class="font-serif-luxury text-xl font-bold text-stone-800 mb-2">No Teas Found</h3>
+      <p class="text-sm text-stone-500 max-w-md mx-auto mb-6">We couldn't find any tea blends matching your selected filter combination.</p>
+      <button onclick="resetAllFilters()" class="px-6 py-2.5 bg-[#0a2920] text-amber-300 font-semibold rounded-xl text-xs shadow hover:bg-[#154737] transition-all">
+        Reset All Filters
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Master Footer -->
+  <footer class="bg-[#051813] text-stone-400 text-sm pt-16 pb-12 border-t border-amber-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
+      
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center font-serif-luxury font-bold text-stone-950 text-lg">CR</div>
+          <span class="font-serif-luxury text-xl font-bold text-amber-200">CEYLON ROYALE</span>
+        </div>
+        <p class="text-xs text-stone-400 leading-relaxed pr-6">
+          Cultivating, crafting and sharing 100% Pure Ceylon Single-Origin teas since 1867. Proudly carrying the authentic Ceylon Lion Logo emblem authorized by the Sri Lanka Tea Board.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Tea Collections</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="shop.html?category=black" class="hover:text-amber-300">High Grown Black Tea</a></li>
+          <li><a href="shop.html?category=white" class="hover:text-amber-300">Imperial Silver Tips</a></li>
+          <li><a href="shop.html?category=green" class="hover:text-amber-300">Pan-Fired Ceylon Green</a></li>
+          <li><a href="shop.html?category=spiced" class="hover:text-amber-300">Ceylon Spiced Chai</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Connoisseur Guide</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="heritage.html" class="hover:text-amber-300">The 1867 Ceylon Heritage</a></li>
+          <li><a href="brewing-guide.html" class="hover:text-amber-300">Interactive Steep Timer</a></li>
+          <li><a href="heritage.html#terroirs" class="hover:text-amber-300">7 Agro-Climatic Elevations</a></li>
+          <li><a href="contact.html#faq" class="hover:text-amber-300">Shipping & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Estate Concierge</h4>
+        <div class="space-y-2 text-xs text-stone-400">
+          <p>Nuwara Eliya 22200, Sri Lanka</p>
+          <p>concierge@ceylonroyale.lk</p>
+          <p>+94 (11) 789 2400</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+      <p>© 2026 CEYLON ROYALE TEA BLENDS (PVT) LTD. ALL RIGHTS RESERVED.</p>
+      <span>Certified 100% Pure Ceylon Lion Logo</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // State for Shop Page
+    let activeCategory = 'all';
+    let activeElevation = 'all';
+    let activeSort = 'featured';
+    let onlyInStock = false;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Parse query params (e.g. ?category=white or ?elevation=high)
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('category')) {
+        activeCategory = params.get('category');
+      }
+      if (params.get('elevation')) {
+        activeElevation = params.get('elevation');
+        const elevSelect = document.getElementById('elevation-select');
+        if (elevSelect) elevSelect.value = activeElevation;
+      }
+
+      updatePillUI();
+      renderCatalog();
+    });
+
+    function setFilter(type, value) {
+      if (type === 'category') {
+        activeCategory = value;
+        updatePillUI();
+      }
+      renderCatalog();
+    }
+
+    function setElevationFilter(val) {
+      activeElevation = val;
+      renderCatalog();
+    }
+
+    function setSort(val) {
+      activeSort = val;
+      renderCatalog();
+    }
+
+    function toggleInStock(checked) {
+      onlyInStock = checked;
+      renderCatalog();
+    }
+
+    function resetAllFilters() {
+      activeCategory = 'all';
+      activeElevation = 'all';
+      activeSort = 'featured';
+      onlyInStock = false;
+
+      document.getElementById('elevation-select').value = 'all';
+      document.getElementById('sort-select').value = 'featured';
+      document.getElementById('stock-toggle').checked = false;
+
+      updatePillUI();
+      renderCatalog();
+    }
+
+    function updatePillUI() {
+      const pills = document.querySelectorAll('.filter-pill');
+      pills.forEach(pill => {
+        if (pill.dataset.cat === activeCategory) {
+          pill.classList.add('bg-[#0a2920]', 'text-amber-300', 'shadow');
+          pill.classList.remove('bg-stone-100', 'text-stone-700');
+        } else {
+          pill.classList.remove('bg-[#0a2920]', 'text-amber-300', 'shadow');
+          pill.classList.add('bg-stone-100', 'text-stone-700');
+        }
+      });
+    }
+
+    function renderCatalog() {
+      let filtered = [...TEA_PRODUCTS];
+
+      // Filter Category
+      if (activeCategory !== 'all') {
+        if (activeCategory === 'herbal') {
+          filtered = filtered.filter(p => p.category === 'herbal' || p.category === 'flavored');
+        } else {
+          filtered = filtered.filter(p => p.category === activeCategory);
+        }
+      }
+
+      // Filter Elevation
+      if (activeElevation !== 'all') {
+        if (activeElevation === 'high') {
+          filtered = filtered.filter(p => p.elevation.toLowerCase().includes('high'));
+        } else if (activeElevation === 'mid') {
+          filtered = filtered.filter(p => p.elevation.toLowerCase().includes('mid'));
+        } else if (activeElevation === 'low') {
+          filtered = filtered.filter(p => p.elevation.toLowerCase().includes('low'));
+        }
+      }
+
+      // In stock
+      if (onlyInStock) {
+        filtered = filtered.filter(p => p.inStock);
+      }
+
+      // Sort
+      if (activeSort === 'price-asc') {
+        filtered.sort((a, b) => a.priceUSD - b.priceUSD);
+      } else if (activeSort === 'price-desc') {
+        filtered.sort((a, b) => b.priceUSD - a.priceUSD);
+      } else if (activeSort === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      } else {
+        // Featured
+        filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+      }
+
+      const grid = document.getElementById('catalog-products-grid');
+      const emptyState = document.getElementById('catalog-empty-state');
+      const countLabel = document.getElementById('results-count');
+
+      if (countLabel) {
+        countLabel.textContent = `Showing ${filtered.length} Blends`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(tea => `
+        <div class="luxury-card bg-white rounded-2xl overflow-hidden border border-stone-200 flex flex-col justify-between group">
+          
+          <div class="relative img-zoom-container h-60 bg-stone-100">
+            <img src="${tea.image}" alt="${tea.name}" class="w-full h-full object-cover" />
+            <span class="absolute top-3 left-3 bg-[#0a2920]/90 backdrop-blur text-amber-300 text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full border border-amber-400/30">
+              ${tea.badge || 'Pure Ceylon'}
+            </span>
+            <button onclick="openQuickView('${tea.id}')" class="absolute bottom-3 right-3 bg-white/95 hover:bg-white text-stone-800 p-2 rounded-xl shadow-md text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              <span>Quick View</span>
+            </button>
+          </div>
+
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs text-stone-500 mb-1">
+                <span class="truncate font-semibold text-amber-700">${tea.elevation.split('(')[0]}</span>
+                <span class="flex items-center text-amber-500">★ ${tea.rating}</span>
+              </div>
+              <h3 class="font-serif-luxury font-bold text-stone-900 text-base mb-1.5 leading-snug hover:text-emerald-800 transition-colors">
+                <a href="product-details.html?id=${tea.id}">${tea.name}</a>
+              </h3>
+              <p class="text-xs text-stone-500 line-clamp-2 mb-3">${tea.description}</p>
+              
+              <div class="flex flex-wrap gap-1 mb-4">
+                ${tea.tastingNotes.slice(0, 3).map(n => `<span class="text-[10px] bg-amber-50 text-amber-900 border border-amber-200/80 px-2 py-0.5 rounded-full font-medium">${n}</span>`).join('')}
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-stone-400 block uppercase">From</span>
+                <span class="font-bold text-lg text-emerald-900">${formatPrice(tea.priceUSD)}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <a href="product-details.html?id=${tea.id}" class="p-2 border border-stone-200 hover:border-stone-800 text-stone-600 rounded-xl hover:text-stone-900 transition-colors" title="View Details">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <button onclick="addToCart('${tea.id}')" class="px-3.5 py-2 bg-[#0a2920] hover:bg-[#154737] text-amber-300 font-bold text-xs rounded-xl shadow transition-all flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                  <span>Add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      `).join('');
+    }
+
+    // Refresh prices on currency change
+    window.addEventListener('currency-changed', () => {
+      renderCatalog();
+    });
+  </script>
+</body>
+</html>

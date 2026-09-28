@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceylon Tea | Authentic Sri Lankan Blends</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tea-green': '#4a7c59',
+                        'tea-dark': '#2c4c3b',
+                        'tea-gold': '#d4af37',
+                        'tea-light': '#f4f1ea'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-tea-light text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 text-2xl font-serif font-bold text-tea-dark">
+                        <i class="fas fa-leaf text-tea-green"></i>
+                        CEYLON TEA
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-tea-green font-semibold border-b-2 border-tea-green px-1 py-2">Home</a>
+                    <a href="products.html" class="text-gray-600 hover:text-tea-green transition px-1 py-2">Products</a>
+                    <a href="about.html" class="text-gray-600 hover:text-tea-green transition px-1 py-2">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-tea-green transition px-1 py-2">Contact</a>
+                    <a href="#" class="text-gray-600 hover:text-tea-green"><i class="fas fa-shopping-cart text-xl"></i></a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-tea-dark focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-tea-green font-semibold">Home</a>
+                <a href="products.html" class="block px-3 py-2 text-gray-600">Products</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-600">About Us</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative pt-20 pb-32 flex content-center items-center justify-center min-h-screen">
+        <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1596422846543-74c6e949db16?q=80&w=2000');">
+            <span class="w-full h-full absolute opacity-60 bg-black"></span>
+        </div>
+        <div class="container relative mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 drop-shadow-lg">
+                The Purest <span class="text-tea-gold">Ceylon Tea</span>
+            </h1>
+            <p class="mt-4 text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow">
+                Hand-picked from the misty mountains of Sri Lanka. Experience the authentic taste, rich aroma, and centuries of heritage in every cup.
+            </p>
+            <a href="products.html" class="btn-primary bg-tea-green text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl">
+                Shop Our Blends
+            </a>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                <div class="p-6">
+                    <div class="w-16 h-16 mx-auto bg-tea-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mountain text-3xl text-tea-green"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">High Altitude Grown</h3>
+                    <p class="text-gray-600">Grown in the central highlands of Sri Lanka, ensuring premium quality and distinct flavor profiles.</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-16 h-16 mx-auto bg-tea-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-hand-holding-heart text-3xl text-tea-green"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Hand-Picked Quality</h3>
+                    <p class="text-gray-600">Carefully hand-plucked by skilled artisans to select only the finest two leaves and a bud.</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-16 h-16 mx-auto bg-tea-light rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-3xl text-tea-green"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Worldwide Delivery</h3>
+                    <p class="text-gray-600">From our estates straight to your doorstep, bringing freshness across the globe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-tea-dark text-white pt-12 pb-8 mt-auto">
+        <div class="container mx-auto px-4 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-2xl font-serif font-bold text-tea-gold mb-4">CEYLON TEA</h4>
+                    <p class="text-gray-400">Bringing the finest Sri Lankan tea to the world since 2024.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-serif mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="products.html" class="hover:text-tea-gold">Shop</a></li>
+                        <li><a href="about.html" class="hover:text-tea-gold">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-tea-gold">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-serif mb-4">Follow Us</h4>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-tea-gold transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-tea-gold transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-tea-gold transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Ceylon Tea Blends. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

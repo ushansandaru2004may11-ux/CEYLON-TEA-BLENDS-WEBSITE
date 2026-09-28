@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Steep Master & Brewing Guide | CEYLON ROYALE</title>
+  <meta name="description" content="Master the art of steeping pure Ceylon teas with our live digital steep timer, water temperature guide, and tea-to-water ratio calculator.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plantation: {
+              900: '#07211a',
+              800: '#0a2920',
+              700: '#113c2f',
+              600: '#1b5846',
+              500: '#28755e'
+            },
+            ceylongold: {
+              400: '#f5d365',
+              500: '#c59b27',
+              600: '#ab821b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#fbf9f4] text-stone-900 selection:bg-amber-200 selection:text-emerald-950">
+
+  <!-- Top Announcement Bar -->
+  <aside aria-label="Announcement" class="bg-[#07211a] text-amber-200/90 text-xs py-2 px-4 border-b border-amber-900/30">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center">
+      <div class="flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span class="font-medium tracking-wide">COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $50</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span class="text-stone-300">🦁 100% Pure Ceylon Certified</span>
+        <!-- Currency Selector -->
+        <div class="flex items-center gap-1 bg-[#0a2920] px-2 py-0.5 rounded border border-amber-500/20">
+          <span class="text-amber-400 text-xs">🌐</span>
+          <select aria-label="Select currency" class="currency-select bg-transparent text-amber-200 text-xs focus:outline-none cursor-pointer">
+            <option value="USD" class="bg-stone-900 text-white">USD ($)</option>
+            <option value="LKR" class="bg-stone-900 text-white">LKR (Rs.)</option>
+            <option value="EUR" class="bg-stone-900 text-white">EUR (€)</option>
+            <option value="GBP" class="bg-stone-900 text-white">GBP (£)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#0a2920]/95 backdrop-blur-md border-b border-amber-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-stone-300 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 p-0.5 shadow-lg flex items-center justify-center">
+            <div class="w-full h-full rounded-full bg-[#07211a] flex items-center justify-center">
+              <span class="font-serif-luxury font-bold text-amber-300 text-xl">CR</span>
+            </div>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-xl sm:text-2xl font-bold tracking-widest text-amber-200 block">CEYLON ROYALE</span>
+            <span class="text-[10px] tracking-[0.25em] text-amber-400/80 font-medium block uppercase">Est. 1867 • Single Origin</span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center space-x-8 text-sm tracking-wide font-medium">
+          <a href="index.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Home</a>
+          <a href="shop.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Tea Collection</a>
+          <a href="heritage.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Our Heritage</a>
+          <a href="brewing-guide.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Brewing Guide</a>
+          <a href="contact.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Wholesale & Contact</a>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <button onclick="openSearchModal()" class="p-2 text-stone-300 hover:text-amber-300" title="Search">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </button>
+          <button onclick="openCartDrawer()" class="relative p-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+            <svg class="w-5 h-5 text-stone-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="hidden sm:inline text-xs uppercase tracking-wider font-extrabold text-stone-950">Tea Chest</span>
+            <span class="cart-count-badge hidden absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0a2920]">0</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#07211a] border-b border-amber-500/20 px-6 py-6 space-y-4">
+      <div class="flex justify-between items-center pb-3 border-b border-stone-800">
+        <span class="text-xs uppercase font-bold tracking-widest text-amber-400">Navigation</span>
+        <button id="mobile-menu-close" class="text-stone-400 hover:text-white">✕</button>
+      </div>
+      <a href="index.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Home</a>
+      <a href="shop.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Tea Collection</a>
+      <a href="heritage.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Our Heritage (Story of 1867)</a>
+      <a href="brewing-guide.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Interactive Steep Master</a>
+      <a href="cart.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Shopping Cart & Checkout</a>
+      <a href="contact.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Contact & Wholesale Export</a>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="bg-[#07211a] text-stone-100 py-14 px-4 sm:px-6 lg:px-8 border-b border-amber-500/20 relative">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-xs uppercase font-bold tracking-[0.25em] text-amber-400 block mb-2">Sommelier Laboratory</span>
+      <h1 class="font-serif-luxury text-3xl sm:text-5xl font-bold text-amber-100 mb-4">Interactive Steep Master</h1>
+      <p class="text-stone-300 text-sm sm:text-base font-light max-w-2xl mx-auto">
+        Great tea is born on the mountain, but perfected in the teapot. Select your blend, adjust water temperature, and use our live chiming steep timer.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Timer Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <div class="bg-white rounded-3xl border border-stone-200 shadow-xl overflow-hidden mb-16">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12">
+        
+        <!-- Left: Blend Selector (5 cols) -->
+        <div class="lg:col-span-5 bg-stone-50/80 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-stone-200">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-serif-luxury font-bold text-lg text-stone-900">1. Select Ceylon Blend</h3>
+            <span class="text-[11px] font-bold text-amber-700 bg-amber-100/70 px-2 py-0.5 rounded">Preset Timers</span>
+          </div>
+          <p class="text-xs text-stone-500 mb-6">Each tea category requires specific water temperatures and steeping seconds to release its authentic terroir notes without bitterness.</p>
+
+          <div class="space-y-2.5" id="timer-presets-list">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Right: Live Timer Dashboard (7 cols) -->
+        <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col items-center justify-center text-center bg-gradient-to-b from-white to-stone-50/50">
+          
+          <!-- Active Selection Summary -->
+          <div class="mb-6">
+            <span id="active-timer-category" class="text-xs uppercase tracking-wider font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200/80"></span>
+            <h2 id="active-timer-name" class="font-serif-luxury text-2xl sm:text-3xl font-bold text-stone-900 mt-2 mb-1"></h2>
+            <div class="flex items-center justify-center gap-4 text-xs text-stone-500 mt-2">
+              <span id="active-timer-temp"></span>
+              <span>•</span>
+              <span id="active-timer-ratio"></span>
+            </div>
+          </div>
+
+          <!-- Circular SVG Progress Timer -->
+          <div class="relative w-64 h-64 sm:w-72 sm:h-72 my-4 flex items-center justify-center">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+              <!-- Background Circle -->
+              <circle cx="100" cy="100" r="88" stroke="#f1ede4" stroke-width="10" fill="transparent" />
+              <!-- Animated Progress Circle -->
+              <circle id="timer-progress-ring" cx="100" cy="100" r="88" stroke="#c59b27" stroke-width="10" stroke-linecap="round" fill="transparent" stroke-dasharray="553" stroke-dashoffset="0" class="steep-timer-circle" />
+            </svg>
+
+            <!-- Digital Display inside ring -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <span id="timer-display" class="font-serif-luxury text-5xl sm:text-6xl font-extrabold text-[#0a2920] tracking-tight">03:30</span>
+              <span id="timer-status-text" class="text-xs uppercase font-bold tracking-widest text-amber-700 mt-1">Ready to Steep</span>
+            </div>
+          </div>
+
+          <!-- Timer Controls -->
+          <div class="flex items-center gap-3 mt-4">
+            <button id="timer-start-btn" onclick="toggleTimer()" class="px-8 py-3.5 bg-[#0a2920] hover:bg-[#154737] text-amber-300 font-serif-luxury font-bold text-sm tracking-wider rounded-xl shadow-lg transition-all flex items-center gap-2">
+              <svg id="play-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span id="timer-btn-label">START STEEPING</span>
+            </button>
+            <button onclick="resetTimer()" class="p-3.5 border border-stone-300 hover:border-stone-800 text-stone-600 rounded-xl transition-colors hover:text-stone-900" title="Reset Timer">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </button>
+          </div>
+
+          <p class="text-xs text-stone-400 mt-5 max-w-sm">
+            🔔 Features Web Audio crystal chime alert when steeping finishes. Keep this tab active!
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Leaf-to-Water Interactive Calculator -->
+    <section class="bg-white rounded-3xl border border-stone-200 shadow-sm p-8 sm:p-12 mb-16">
+      <div class="max-w-3xl mx-auto text-center mb-10">
+        <span class="text-xs uppercase font-bold text-amber-700 tracking-widest block mb-1">Precision Brewing</span>
+        <h2 class="font-serif-luxury text-3xl font-bold text-stone-900">Tea-to-Water Ratio Calculator</h2>
+        <p class="text-stone-600 text-sm mt-2">Scale your preparation from an intimate single cup to an opulent afternoon tea service.</p>
+      </div>
+
+      <div class="max-w-xl mx-auto bg-stone-50 p-6 rounded-2xl border border-stone-200">
+        <div class="flex items-center justify-between mb-4">
+          <label class="text-xs font-bold uppercase text-stone-700">Number of Cups to Brew:</label>
+          <div class="flex items-center gap-3">
+            <button onclick="adjustCalcCups(-1)" class="w-8 h-8 rounded-lg bg-white border border-stone-300 font-bold hover:bg-stone-100 flex items-center justify-center">-</button>
+            <span id="calc-cups-display" class="font-bold text-lg text-emerald-950 w-8 text-center">2</span>
+            <button onclick="adjustCalcCups(1)" class="w-8 h-8 rounded-lg bg-white border border-stone-300 font-bold hover:bg-stone-100 flex items-center justify-center">+</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 text-center pt-4 border-t border-stone-200">
+          <div class="p-4 bg-white rounded-xl border border-stone-200 shadow-sm">
+            <span class="text-[10px] uppercase font-bold text-stone-400 block">Whole Tea Leaves</span>
+            <span id="calc-grams-display" class="font-serif-luxury text-2xl font-bold text-emerald-900 block my-1">5.0g</span>
+            <span class="text-[11px] text-stone-500">~2 Teaspoons</span>
+          </div>
+          <div class="p-4 bg-white rounded-xl border border-stone-200 shadow-sm">
+            <span class="text-[10px] uppercase font-bold text-stone-400 block">Fresh Spring Water</span>
+            <span id="calc-water-display" class="font-serif-luxury text-2xl font-bold text-emerald-900 block my-1">440ml</span>
+            <span class="text-[11px] text-stone-500">Brought to 95°C</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sommelier Golden Rules -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      
+      <div class="p-6 bg-white rounded-2xl border border-stone-200 shadow-sm">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-4">
+          💧
+        </div>
+        <h3 class="font-serif-luxury text-lg font-bold text-stone-900 mb-2">Never Boil Water Twice</h3>
+        <p class="text-xs text-stone-600 leading-relaxed">
+          Re-boiling exhausts dissolved oxygen from the water. Oxygen is the vessel that transports the delicate volatile aromatic oils from the tea leaf to your palate. Always draw fresh, cold water.
+        </p>
+      </div>
+
+      <div class="p-6 bg-white rounded-2xl border border-stone-200 shadow-sm">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-4">
+          🫖
+        </div>
+        <h3 class="font-serif-luxury text-lg font-bold text-stone-900 mb-2">Pre-Warm The Teapot</h3>
+        <p class="text-xs text-stone-600 leading-relaxed">
+          Swirl boiling water inside your porcelain or clay pot and discard it before adding leaves. A cold pot can drop the water temperature by up to 10°C, causing under-extraction of tea polyphenols.
+        </p>
+      </div>
+
+      <div class="p-6 bg-white rounded-2xl border border-stone-200 shadow-sm">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-4">
+          ⏱️
+        </div>
+        <h3 class="font-serif-luxury text-lg font-bold text-stone-900 mb-2">Do Not Squeeze The Bag</h3>
+        <p class="text-xs text-stone-600 leading-relaxed">
+          Squeezing the infuser or tea bag releases bitter hydrolyzable tannins into the brew. Simply lift gently and allow gravity to drain the golden nectar naturally.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Master Footer -->
+  <footer class="bg-[#051813] text-stone-400 text-sm pt-16 pb-12 border-t border-amber-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center font-serif-luxury font-bold text-stone-950 text-lg">CR</div>
+          <span class="font-serif-luxury text-xl font-bold text-amber-200">CEYLON ROYALE</span>
+        </div>
+        <p class="text-xs text-stone-400 leading-relaxed pr-6">
+          Cultivating, crafting and sharing 100% Pure Ceylon Single-Origin teas since 1867. Proudly carrying the authentic Ceylon Lion Logo emblem authorized by the Sri Lanka Tea Board.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Tea Collections</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="shop.html?category=black" class="hover:text-amber-300">High Grown Black Tea</a></li>
+          <li><a href="shop.html?category=white" class="hover:text-amber-300">Imperial Silver Tips</a></li>
+          <li><a href="shop.html?category=green" class="hover:text-amber-300">Pan-Fired Ceylon Green</a></li>
+          <li><a href="shop.html?category=spiced" class="hover:text-amber-300">Ceylon Spiced Chai</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Connoisseur Guide</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="heritage.html" class="hover:text-amber-300">The 1867 Ceylon Heritage</a></li>
+          <li><a href="brewing-guide.html" class="hover:text-amber-300">Interactive Steep Timer</a></li>
+          <li><a href="heritage.html#terroirs" class="hover:text-amber-300">7 Agro-Climatic Elevations</a></li>
+          <li><a href="contact.html#faq" class="hover:text-amber-300">Shipping & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Estate Concierge</h4>
+        <div class="space-y-2 text-xs text-stone-400">
+          <p>Nuwara Eliya 22200, Sri Lanka</p>
+          <p>concierge@ceylonroyale.lk</p>
+          <p>+94 (11) 789 2400</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+      <p>© 2026 CEYLON ROYALE TEA BLENDS (PVT) LTD. ALL RIGHTS RESERVED.</p>
+      <span>Certified 100% Pure Ceylon Lion Logo</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Timer State
+    let activePreset = null;
+    let timerTotalSeconds = 210; // 3.5 mins default
+    let timerRemainingSeconds = 210;
+    let timerInterval = null;
+    let isRunning = false;
+    const RING_CIRCUMFERENCE = 553; // 2 * pi * 88
+
+    // Calculator State
+    let calcCups = 2;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTimerPresets();
+      selectTimerPreset(TEA_PRODUCTS[1].id); // Nuwara Eliya default
+      updateCalculator();
+    });
+
+    function renderTimerPresets() {
+      const container = document.getElementById('timer-presets-list');
+      container.innerHTML = TEA_PRODUCTS.slice(0, 6).map((tea, idx) => `
+        <button onclick="selectTimerPreset('${tea.id}')" data-id="${tea.id}" class="preset-btn w-full p-3 rounded-xl border text-left flex items-center justify-between transition-all border-stone-200 bg-white hover:border-amber-400">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center text-xs font-bold">
+              ${idx + 1}
+            </span>
+            <div>
+              <h4 class="text-xs font-bold text-stone-900 truncate max-w-[190px]">${tea.name}</h4>
+              <p class="text-[10px] text-stone-500">${tea.elevation.split('(')[0]}</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-xs font-bold text-emerald-800">${tea.brewing.timeMin}m</span>
+            <span class="block text-[10px] text-stone-400">${tea.brewing.tempC}°C</span>
+          </div>
+        </button>
+      `).join('');
+    }
+
+    function selectTimerPreset(productId) {
+      const tea = TEA_PRODUCTS.find(p => p.id === productId) || TEA_PRODUCTS[0];
+      activePreset = tea;
+
+      // Update button highlights
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        if (btn.dataset.id === tea.id) {
+          btn.classList.add('border-[#0a2920]', 'bg-emerald-50/60', 'ring-1', 'ring-[#0a2920]');
+          btn.classList.remove('border-stone-200', 'bg-white');
+        } else {
+          btn.classList.remove('border-[#0a2920]', 'bg-emerald-50/60', 'ring-1', 'ring-[#0a2920]');
+          btn.classList.add('border-stone-200', 'bg-white');
+        }
+      });
+
+      // Update dashboard
+      document.getElementById('active-timer-category').textContent = tea.category.toUpperCase() + ' TEA';
+      document.getElementById('active-timer-name').textContent = tea.name;
+      document.getElementById('active-timer-temp').textContent = `Optimal Temp: ${tea.brewing.tempC}°C (${tea.brewing.tempF}°F)`;
+      document.getElementById('active-timer-ratio').textContent = `Ratio: ${tea.brewing.grams}g per ${tea.brewing.waterMl}ml`;
+
+      // Reset timer with new seconds
+      resetTimerWithDuration(tea.brewing.timeMin * 60);
+    }
+
+    function resetTimerWithDuration(seconds) {
+      clearInterval(timerInterval);
+      isRunning = false;
+      timerTotalSeconds = seconds;
+      timerRemainingSeconds = seconds;
+      updateTimerDisplay();
+      updateRingProgress(0);
+      document.getElementById('timer-status-text').textContent = 'Ready to Steep';
+      document.getElementById('timer-btn-label').textContent = 'START STEEPING';
+      document.getElementById('play-icon').innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>`;
+    }
+
+    function toggleTimer() {
+      if (isRunning) {
+        // Pause
+        clearInterval(timerInterval);
+        isRunning = false;
+        document.getElementById('timer-status-text').textContent = 'Paused';
+        document.getElementById('timer-btn-label').textContent = 'RESUME';
+      } else {
+        // Start
+        isRunning = true;
+        document.getElementById('timer-status-text').textContent = 'Steeping in Progress...';
+        document.getElementById('timer-btn-label').textContent = 'PAUSE';
+
+        timerInterval = setInterval(() => {
+          timerRemainingSeconds--;
+          updateTimerDisplay();
+
+          const progress = (timerTotalSeconds - timerRemainingSeconds) / timerTotalSeconds;
+          updateRingProgress(progress);
+
+          if (timerRemainingSeconds <= 0) {
+            clearInterval(timerInterval);
+            isRunning = false;
+            steepCompleted();
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      resetTimerWithDuration(activePreset ? (activePreset.brewing.timeMin * 60) : 210);
+    }
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(timerRemainingSeconds / 60);
+      const seconds = timerRemainingSeconds % 60;
+      const str = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      document.getElementById('timer-display').textContent = str;
+    }
+
+    function updateRingProgress(progress) {
+      const ring = document.getElementById('timer-progress-ring');
+      const offset = RING_CIRCUMFERENCE - (progress * RING_CIRCUMFERENCE);
+      ring.style.strokeDashoffset = offset;
+    }
+
+    function steepCompleted() {
+      document.getElementById('timer-status-text').textContent = 'Steep Complete! Savor Your Brew';
+      document.getElementById('timer-btn-label').textContent = 'STEEP AGAIN';
+      playChimeAudio();
+      showToast(`☕ Steep complete for "${activePreset.name}"! Strain immediately and enjoy.`, 'success');
+    }
+
+    // Web Audio Synthesizer Chime
+    function playChimeAudio() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+
+        // 3 Harmonious bell frequencies (E5, G#5, B5)
+        const freqs = [659.25, 830.61, 987.77];
+        freqs.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + (idx * 0.15));
+          
+          gain.gain.setValueAtTime(0, ctx.currentTime + (idx * 0.15));
+          gain.gain.linearRampToValueAtTime(0.3, ctx.currentTime + (idx * 0.15) + 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (idx * 0.15) + 2.5);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(ctx.currentTime + (idx * 0.15));
+          osc.stop(ctx.currentTime + (idx * 0.15) + 2.6);
+        });
+      } catch (e) {
+        console.log('Web Audio not supported or blocked by user gesture', e);
+      }
+    }
+
+    // Ratio Calculator
+    function adjustCalcCups(delta) {
+      calcCups = Math.max(1, Math.min(12, calcCups + delta));
+      updateCalculator();
+    }
+
+    function updateCalculator() {
+      document.getElementById('calc-cups-display').textContent = calcCups;
+      const grams = (calcCups * 2.5).toFixed(1);
+      const ml = calcCups * 220;
+      document.getElementById('calc-grams-display').textContent = `${grams}g`;
+      document.getElementById('calc-water-display').textContent = `${ml}ml`;
+    }
+  </script>
+</body>
+</html>

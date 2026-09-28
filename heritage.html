@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Heritage & Story of Ceylon Tea | CEYLON ROYALE</title>
+  <meta name="description" content="Explore the 1867 origins of pure Ceylon tea, the legacy of James Taylor, the sacred 7 tea elevations, and the authentic Ceylon Lion Logo standard.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plantation: {
+              900: '#07211a',
+              800: '#0a2920',
+              700: '#113c2f',
+              600: '#1b5846',
+              500: '#28755e'
+            },
+            ceylongold: {
+              400: '#f5d365',
+              500: '#c59b27',
+              600: '#ab821b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#fbf9f4] text-stone-900 selection:bg-amber-200 selection:text-emerald-950">
+
+  <!-- Top Announcement Bar -->
+  <aside aria-label="Announcement" class="bg-[#07211a] text-amber-200/90 text-xs py-2 px-4 border-b border-amber-900/30">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center">
+      <div class="flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span class="font-medium tracking-wide">COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $50</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span class="text-stone-300">🦁 100% Pure Ceylon Certified</span>
+        <!-- Currency Selector -->
+        <div class="flex items-center gap-1 bg-[#0a2920] px-2 py-0.5 rounded border border-amber-500/20">
+          <span class="text-amber-400 text-xs">🌐</span>
+          <select aria-label="Select currency" class="currency-select bg-transparent text-amber-200 text-xs focus:outline-none cursor-pointer">
+            <option value="USD" class="bg-stone-900 text-white">USD ($)</option>
+            <option value="LKR" class="bg-stone-900 text-white">LKR (Rs.)</option>
+            <option value="EUR" class="bg-stone-900 text-white">EUR (€)</option>
+            <option value="GBP" class="bg-stone-900 text-white">GBP (£)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#0a2920]/95 backdrop-blur-md border-b border-amber-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-stone-300 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 p-0.5 shadow-lg flex items-center justify-center">
+            <div class="w-full h-full rounded-full bg-[#07211a] flex items-center justify-center">
+              <span class="font-serif-luxury font-bold text-amber-300 text-xl">CR</span>
+            </div>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-xl sm:text-2xl font-bold tracking-widest text-amber-200 block">CEYLON ROYALE</span>
+            <span class="text-[10px] tracking-[0.25em] text-amber-400/80 font-medium block uppercase">Est. 1867 • Single Origin</span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center space-x-8 text-sm tracking-wide font-medium">
+          <a href="index.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Home</a>
+          <a href="shop.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Tea Collection</a>
+          <a href="heritage.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Our Heritage</a>
+          <a href="brewing-guide.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Brewing Guide</a>
+          <a href="contact.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Wholesale & Contact</a>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <button onclick="openSearchModal()" class="p-2 text-stone-300 hover:text-amber-300" title="Search">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </button>
+          <button onclick="openCartDrawer()" class="relative p-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+            <svg class="w-5 h-5 text-stone-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="hidden sm:inline text-xs uppercase tracking-wider font-extrabold text-stone-950">Tea Chest</span>
+            <span class="cart-count-badge hidden absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0a2920]">0</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#07211a] border-b border-amber-500/20 px-6 py-6 space-y-4">
+      <div class="flex justify-between items-center pb-3 border-b border-stone-800">
+        <span class="text-xs uppercase font-bold tracking-widest text-amber-400">Navigation</span>
+        <button id="mobile-menu-close" class="text-stone-400 hover:text-white">✕</button>
+      </div>
+      <a href="index.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Home</a>
+      <a href="shop.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Tea Collection</a>
+      <a href="heritage.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Our Heritage (Story of 1867)</a>
+      <a href="brewing-guide.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Interactive Steep Master</a>
+      <a href="cart.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Shopping Cart & Checkout</a>
+      <a href="contact.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Contact & Wholesale Export</a>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="bg-[#07211a] text-stone-100 py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1800&q=80" alt="Loolkandura Estate" class="w-full h-full object-cover" />
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <span class="text-xs uppercase font-bold tracking-[0.3em] text-amber-400 block mb-3">150+ Years of Mastery</span>
+      <h1 class="font-serif-luxury text-4xl sm:text-6xl font-extrabold text-amber-100 mb-6 leading-tight">
+        The Legend of Ceylon Tea
+      </h1>
+      <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+        How a resilient island in the Indian Ocean became the crown supplier of the world’s most sought-after golden brew.
+      </p>
+    </div>
+  </section>
+
+  <!-- Historical Timeline Section -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs uppercase font-bold text-amber-700 tracking-widest block mb-1">Chronicles of Paradise</span>
+      <h2 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-stone-900">From Loolkandura to Buckingham Palace</h2>
+      <div class="w-16 h-1 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <!-- Timeline items -->
+    <div class="space-y-12 relative before:absolute before:inset-0 before:left-8 md:before:left-1/2 before:w-0.5 before:bg-amber-900/20">
+      
+      <!-- Event 1: 1867 -->
+      <div class="relative flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2 md:text-right md:pr-10 pl-16 md:pl-0">
+          <span class="font-serif-luxury text-3xl font-extrabold text-amber-600 block">1867</span>
+          <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">James Taylor Plants Field No. 7</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">
+            A 32-year-old Scotsman named James Taylor plants 19 acres of tea seedlings at Loolkandura Estate in Kandy, Sri Lanka. Working on the verandah of his bungalow, he hand-rolls the leaves and crafts Ceylon's very first commercial batch.
+          </p>
+        </div>
+        <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#0a2920] border-4 border-amber-400 text-white flex items-center justify-center text-xs font-bold shadow-md">
+          1
+        </div>
+        <div class="md:w-1/2 md:pl-10 pl-16 md:pl-10">
+          <img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=600&q=80" alt="Tea bushes" class="rounded-2xl shadow border border-stone-200 h-48 w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- Event 2: 1873 -->
+      <div class="relative flex flex-col md:flex-row-reverse items-center gap-8">
+        <div class="md:w-1/2 md:text-left md:pl-10 pl-16 md:pl-10">
+          <span class="font-serif-luxury text-3xl font-extrabold text-amber-600 block">1873</span>
+          <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">First Export to London Auction</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">
+            The first consignment of 23 pounds of pure Ceylon tea arrives at the Mincing Lane London tea auction. British merchants are spellbound by its luminous reddish-amber liquor and crisp briskness, launching a worldwide sensation.
+          </p>
+        </div>
+        <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#0a2920] border-4 border-amber-400 text-white flex items-center justify-center text-xs font-bold shadow-md">
+          2
+        </div>
+        <div class="md:w-1/2 md:pr-10 pl-16 md:pl-0">
+          <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80" alt="Ceylon tea leaves" class="rounded-2xl shadow border border-stone-200 h-48 w-full object-cover" />
+        </div>
+      </div>
+
+      <!-- Event 3: 1893 -->
+      <div class="relative flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2 md:text-right md:pr-10 pl-16 md:pl-0">
+          <span class="font-serif-luxury text-3xl font-extrabold text-amber-600 block">1893</span>
+          <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">Chicago World's Columbian Exposition</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">
+            Over one million packages of Ceylon tea are sold at the World’s Fair in Chicago. Ceylon establishes its reputation as the global benchmark for orthodox, unblended whole-leaf black tea.
+          </p>
+        </div>
+        <div class="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#0a2920] border-4 border-amber-400 text-white flex items-center justify-center text-xs font-bold shadow-md">
+          3
+        </div>
+        <div class="md:w-1/2 md:pl-10 pl-16 md:pl-10">
+          <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80" alt="Mountain tea landscape" class="rounded-2xl shadow border border-stone-200 h-48 w-full object-cover" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- The Ceylon Lion Logo Authenticity Standard -->
+  <section id="lion-logo" class="bg-[#0a2920] text-stone-100 py-20 px-4 sm:px-6 lg:px-8 border-y border-amber-500/20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold mb-4 border border-amber-400/40">
+          🦁 LEGAL TRADEMARK OF SRI LANKA TEA BOARD
+        </div>
+        <h2 class="font-serif-luxury text-3xl sm:text-5xl font-bold text-amber-200 mb-6 leading-tight">
+          The Sacred Ceylon Lion Logo Standard
+        </h2>
+        <p class="text-stone-300 text-base leading-relaxed mb-6">
+          The sword-bearing Ceylon Lion is not merely a label—it is the world’s most strictly monitored single-country origin guarantee. To carry this logo, every harvest must satisfy three non-negotiable statutory requirements:
+        </p>
+
+        <ul class="space-y-4 text-sm text-stone-200">
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold text-lg">1.</span>
+            <div>
+              <strong class="text-amber-300 block">100% Pure Ceylon Cultivation</strong>
+              The tea must be cultivated and hand-plucked exclusively on tea estates situated on the island of Sri Lanka. No blending with lower-grade teas from other nations is permitted.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold text-lg">2.</span>
+            <div>
+              <strong class="text-amber-300 block">100% Packed in Sri Lanka</strong>
+              To prevent adulteration during shipping, the tea must be packed in certified airtight containers prior to departure from Colombo.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold text-lg">3.</span>
+            <div>
+              <strong class="text-amber-300 block">Rigorous Organoleptic Testing</strong>
+              Every batch undergoes sensory cupping by official government master tea tasters to guarantee liquor color, aroma, and tannin purity.
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex justify-center">
+        <div class="p-8 rounded-3xl bg-stone-900/90 border border-amber-500/30 text-center max-w-md shadow-2xl">
+          <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-tr from-amber-600 via-amber-400 to-amber-200 p-1 flex items-center justify-center mb-6 shadow-xl">
+            <div class="w-full h-full rounded-full bg-[#07211a] flex items-center justify-center text-5xl">
+              🦁
+            </div>
+          </div>
+          <h3 class="font-serif-luxury text-2xl font-bold text-amber-300 mb-2">17 Arrowheads on Sword</h3>
+          <p class="text-xs text-stone-400 leading-relaxed mb-4">
+            Notice the sword held by the lion: precisely 17 arrowheads represent the 17 quality parameters monitored by the Sri Lanka Tea Board. Look for this hallmark on all our packages.
+          </p>
+          <div class="p-3 bg-stone-800/80 rounded-xl border border-stone-700 text-[11px] text-amber-200 font-medium">
+            Authorization License: CR-SLTB/2026/894
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 7 Sacred Elevations Grid -->
+  <section id="terroirs" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs uppercase font-bold text-amber-700 tracking-widest block mb-1">Microclimates of Sri Lanka</span>
+      <h2 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-stone-900">The 7 Agro-Climatic Districts</h2>
+      <p class="text-stone-600 text-sm mt-3">From equatorial rainforests to misty alpine plateaus.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+        <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">6,200+ Feet Altitude</span>
+        <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">Nuwara Eliya</h3>
+        <p class="text-xs text-stone-600 leading-relaxed mb-4">
+          Known as 'Little England'. Cool nights and golden sunshine produce pale champagne-colored tea with crisp eucalyptus and wild floral mint nuances.
+        </p>
+        <span class="text-xs font-semibold text-emerald-800">Champagne Character • High Grown</span>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+        <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">3,500 - 5,000 Feet Altitude</span>
+        <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">Dimbula</h3>
+        <p class="text-xs text-stone-600 leading-relaxed mb-4">
+          Washed by southwest monsoon rains followed by dry winds. Produces glowing amber liquor with refreshing jasmine notes and golden brightness.
+        </p>
+        <span class="text-xs font-semibold text-emerald-800">Amber Golden • High Grown</span>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+        <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">3,000 - 5,000 Feet Altitude</span>
+        <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">Uva</h3>
+        <p class="text-xs text-stone-600 leading-relaxed mb-4">
+          Dry Cachan winds create the world-famous 'Uva seasonal pungency'—an exotic natural wintergreen menthol flavor coveted across Japan and Europe.
+        </p>
+        <span class="text-xs font-semibold text-emerald-800">Wintergreen Menthol • Mid to High</span>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+        <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">2,000 - 4,000 Feet Altitude</span>
+        <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">Kandy</h3>
+        <p class="text-xs text-stone-600 leading-relaxed mb-4">
+          The historic cradle of Ceylon tea. Produces deep copper liquor with full body and brisk strength, ideal for morning teas with milk.
+        </p>
+        <span class="text-xs font-semibold text-emerald-800">Copper Strength • Mid Grown</span>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+        <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">Sea Level - 2,000 Feet</span>
+        <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">Ruhuna</h3>
+        <p class="text-xs text-stone-600 leading-relaxed mb-4">
+          Fed by warm equatorial rains. Known for the blackest leaves and golden tippy teas that brew into rich sweet caramel and dark chocolate liquor.
+        </p>
+        <span class="text-xs font-semibold text-emerald-800">Caramel & Malt • Low Grown</span>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+        <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">High Grown Ridge</span>
+        <h3 class="font-serif-luxury text-xl font-bold text-stone-900 mb-2">Uda Pussellawa</h3>
+        <p class="text-xs text-stone-600 leading-relaxed mb-4">
+          Perched near Nuwara Eliya with misty chill. Produces a darker pinkish-rose liquor with delicate body and subtle tangy notes.
+        </p>
+        <span class="text-xs font-semibold text-emerald-800">Rose-Amber • High Grown</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Ethical & Ozone Friendly Commitment -->
+  <section class="bg-stone-100 py-20 px-4 sm:px-6 lg:px-8 border-t border-stone-200">
+    <div class="max-w-5xl mx-auto text-center">
+      <span class="text-xs uppercase font-bold text-amber-700 tracking-widest block mb-2">Our Pledge</span>
+      <h2 class="font-serif-luxury text-3xl font-bold text-stone-900 mb-6">World’s First Ozone Friendly Tea</h2>
+      <p class="text-stone-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto mb-10">
+        Sri Lanka is the only nation on Earth where 100% of tea cultivation is completely free of Methyl Bromide fumigation, recognized under the Montreal Protocol. When you drink Ceylon Royale, you protect the ozone layer, conserve elephant wildlife corridors, and support healthcare and housing for our female tea plucker communities.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="shop.html" class="px-8 py-3.5 bg-[#0a2920] hover:bg-[#154737] text-amber-300 font-bold rounded-xl text-sm shadow transition-all">
+          Taste The Heritage Blends
+        </a>
+        <a href="brewing-guide.html" class="px-8 py-3.5 bg-white hover:bg-stone-50 text-stone-800 font-bold rounded-xl text-sm border border-stone-300 transition-all">
+          Explore Steeping Masterclass
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Master Footer -->
+  <footer class="bg-[#051813] text-stone-400 text-sm pt-16 pb-12 border-t border-amber-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center font-serif-luxury font-bold text-stone-950 text-lg">CR</div>
+          <span class="font-serif-luxury text-xl font-bold text-amber-200">CEYLON ROYALE</span>
+        </div>
+        <p class="text-xs text-stone-400 leading-relaxed pr-6">
+          Cultivating, crafting and sharing 100% Pure Ceylon Single-Origin teas since 1867. Proudly carrying the authentic Ceylon Lion Logo emblem authorized by the Sri Lanka Tea Board.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Tea Collections</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="shop.html?category=black" class="hover:text-amber-300">High Grown Black Tea</a></li>
+          <li><a href="shop.html?category=white" class="hover:text-amber-300">Imperial Silver Tips</a></li>
+          <li><a href="shop.html?category=green" class="hover:text-amber-300">Pan-Fired Ceylon Green</a></li>
+          <li><a href="shop.html?category=spiced" class="hover:text-amber-300">Ceylon Spiced Chai</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Connoisseur Guide</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="heritage.html" class="hover:text-amber-300">The 1867 Ceylon Heritage</a></li>
+          <li><a href="brewing-guide.html" class="hover:text-amber-300">Interactive Steep Timer</a></li>
+          <li><a href="heritage.html#terroirs" class="hover:text-amber-300">7 Agro-Climatic Elevations</a></li>
+          <li><a href="contact.html#faq" class="hover:text-amber-300">Shipping & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Estate Concierge</h4>
+        <div class="space-y-2 text-xs text-stone-400">
+          <p>Nuwara Eliya 22200, Sri Lanka</p>
+          <p>concierge@ceylonroyale.lk</p>
+          <p>+94 (11) 789 2400</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+      <p>© 2026 CEYLON ROYALE TEA BLENDS (PVT) LTD. ALL RIGHTS RESERVED.</p>
+      <span>Certified 100% Pure Ceylon Lion Logo</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

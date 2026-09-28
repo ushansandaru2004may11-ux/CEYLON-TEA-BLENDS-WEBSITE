@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Tea Chest & Checkout | CEYLON ROYALE</title>
+  <meta name="description" content="Review your selected pure Ceylon artisanal teas, apply promotion vouchers, and proceed to insured worldwide checkout.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plantation: {
+              900: '#07211a',
+              800: '#0a2920',
+              700: '#113c2f',
+              600: '#1b5846',
+              500: '#28755e'
+            },
+            ceylongold: {
+              400: '#f5d365',
+              500: '#c59b27',
+              600: '#ab821b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#fbf9f4] text-stone-900 selection:bg-amber-200 selection:text-emerald-950">
+
+  <!-- Top Announcement Bar -->
+  <aside aria-label="Announcement" class="bg-[#07211a] text-amber-200/90 text-xs py-2 px-4 border-b border-amber-900/30">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center">
+      <div class="flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <span class="font-medium tracking-wide">COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $50</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span class="text-stone-300">🦁 100% Pure Ceylon Certified</span>
+        <!-- Currency Selector -->
+        <div class="flex items-center gap-1 bg-[#0a2920] px-2 py-0.5 rounded border border-amber-500/20">
+          <span class="text-amber-400 text-xs">🌐</span>
+          <select aria-label="Select currency" class="currency-select bg-transparent text-amber-200 text-xs focus:outline-none cursor-pointer">
+            <option value="USD" class="bg-stone-900 text-white">USD ($)</option>
+            <option value="LKR" class="bg-stone-900 text-white">LKR (Rs.)</option>
+            <option value="EUR" class="bg-stone-900 text-white">EUR (€)</option>
+            <option value="GBP" class="bg-stone-900 text-white">GBP (£)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#0a2920]/95 backdrop-blur-md border-b border-amber-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-stone-300 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-700 p-0.5 shadow-lg flex items-center justify-center">
+            <div class="w-full h-full rounded-full bg-[#07211a] flex items-center justify-center">
+              <span class="font-serif-luxury font-bold text-amber-300 text-xl">CR</span>
+            </div>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-xl sm:text-2xl font-bold tracking-widest text-amber-200 block">CEYLON ROYALE</span>
+            <span class="text-[10px] tracking-[0.25em] text-amber-400/80 font-medium block uppercase">Est. 1867 • Single Origin</span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center space-x-8 text-sm tracking-wide font-medium">
+          <a href="index.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Home</a>
+          <a href="shop.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Tea Collection</a>
+          <a href="heritage.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Our Heritage</a>
+          <a href="brewing-guide.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Brewing Guide</a>
+          <a href="contact.html" class="nav-link text-stone-300 hover:text-amber-300 transition-colors py-2">Wholesale & Contact</a>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <button onclick="openSearchModal()" class="p-2 text-stone-300 hover:text-amber-300" title="Search">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </button>
+          <a href="cart.html" class="relative p-2.5 bg-gradient-to-r from-amber-500 to-amber-600 text-stone-950 font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+            <svg class="w-5 h-5 text-stone-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="hidden sm:inline text-xs uppercase tracking-wider font-extrabold text-stone-950">Tea Chest</span>
+            <span class="cart-count-badge hidden absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#0a2920]">0</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#07211a] border-b border-amber-500/20 px-6 py-6 space-y-4">
+      <div class="flex justify-between items-center pb-3 border-b border-stone-800">
+        <span class="text-xs uppercase font-bold tracking-widest text-amber-400">Navigation</span>
+        <button id="mobile-menu-close" class="text-stone-400 hover:text-white">✕</button>
+      </div>
+      <a href="index.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Home</a>
+      <a href="shop.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Tea Collection</a>
+      <a href="heritage.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Our Heritage (Story of 1867)</a>
+      <a href="brewing-guide.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Interactive Steep Master</a>
+      <a href="cart.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1 font-bold text-amber-300">Shopping Cart & Checkout</a>
+      <a href="contact.html" class="block text-stone-200 hover:text-amber-300 font-medium py-1">Contact & Wholesale Export</a>
+    </div>
+  </header>
+
+  <!-- Page Breadcrumb -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-xs text-stone-500 flex items-center gap-2">
+    <a href="index.html" class="hover:text-amber-800">Home</a>
+    <span>/</span>
+    <a href="shop.html" class="hover:text-amber-800">Tea Collection</a>
+    <span>/</span>
+    <span class="text-stone-800 font-semibold">Your Tea Chest</span>
+  </div>
+
+  <!-- Cart & Checkout Area -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20">
+    
+    <div class="mb-8">
+      <span class="text-xs uppercase font-bold tracking-widest text-amber-700 block mb-1">Estate Direct Dispatches</span>
+      <h1 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-stone-900">Your Tea Chest</h1>
+    </div>
+
+    <!-- Free Shipping Progress Bar Card -->
+    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm mb-8" id="free-shipping-card">
+      <div class="flex items-center justify-between text-xs mb-2">
+        <span id="shipping-progress-text" class="font-semibold text-stone-800"></span>
+        <span class="text-amber-700 font-bold">✈️ Insured Worldwide Courier</span>
+      </div>
+      <div class="w-full bg-stone-100 rounded-full h-2.5 overflow-hidden">
+        <div id="shipping-progress-fill" class="bg-gradient-to-r from-amber-500 to-emerald-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: Cart Items (8 cols) -->
+      <div class="lg:col-span-8 bg-white rounded-3xl border border-stone-200 shadow-sm p-6 sm:p-8">
+        
+        <!-- Table Header (Desktop) -->
+        <div class="hidden sm:grid grid-cols-12 gap-4 pb-4 border-b border-stone-200 text-xs font-bold uppercase tracking-wider text-stone-500">
+          <div class="col-span-6">Blend & Selection</div>
+          <div class="col-span-2 text-center">Unit Price</div>
+          <div class="col-span-2 text-center">Quantity</div>
+          <div class="col-span-2 text-right">Subtotal</div>
+        </div>
+
+        <!-- Items Container -->
+        <div id="cart-page-items" class="divide-y divide-stone-100">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Empty Cart Display -->
+        <div id="cart-page-empty" class="hidden py-16 text-center">
+          <div class="w-20 h-20 rounded-full bg-emerald-50 text-emerald-800 mx-auto flex items-center justify-center text-3xl mb-4">
+            🫖
+          </div>
+          <h3 class="font-serif-luxury text-2xl font-bold text-stone-800 mb-2">Your Tea Chest is Empty</h3>
+          <p class="text-sm text-stone-500 max-w-md mx-auto mb-6">Explore our single-estate Nuwara Eliya harvests, Imperial Silver Tips, and handcrafted gift chests.</p>
+          <a href="shop.html" class="px-8 py-3.5 bg-[#0a2920] hover:bg-[#154737] text-amber-300 font-serif-luxury font-bold text-xs tracking-wider rounded-xl shadow transition-all inline-block">
+            EXPLORE THE MASTER BLENDS
+          </a>
+        </div>
+
+        <!-- Bottom Actions (Continue shopping / Clear) -->
+        <div id="cart-actions-bar" class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-stone-200 mt-6">
+          <a href="shop.html" class="text-xs font-bold text-amber-800 hover:text-amber-950 flex items-center gap-1">
+            ← Continue Browsing Blends
+          </a>
+          <button onclick="handleClearCart()" class="text-xs text-stone-400 hover:text-red-600 transition-colors">
+            Clear Entire Tea Chest
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Order Summary & Checkout (4 cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        
+        <!-- Summary Box -->
+        <div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 sm:p-8">
+          <h2 class="font-serif-luxury text-xl font-bold text-stone-900 mb-6">Order Summary</h2>
+
+          <!-- Promo Code Box -->
+          <div class="mb-6">
+            <label class="block text-xs font-bold uppercase text-stone-600 tracking-wider mb-2">Promotional Voucher</label>
+            <div class="flex gap-2">
+              <input type="text" id="promo-input" placeholder="e.g. CEYLON10 or SUPIRI20" class="flex-1 px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs font-semibold uppercase tracking-wider focus:outline-none focus:border-amber-500 uppercase placeholder-stone-400" />
+              <button onclick="handleApplyPromo()" class="px-4 py-2.5 bg-stone-900 hover:bg-stone-800 text-amber-300 text-xs font-bold rounded-xl transition-all">
+                Apply
+              </button>
+            </div>
+            <!-- Active promo indicator -->
+            <div id="active-promo-tag" class="hidden mt-2 flex items-center justify-between p-2 bg-emerald-50 rounded-lg border border-emerald-200 text-xs text-emerald-800">
+              <span id="active-promo-name" class="font-bold"></span>
+              <button onclick="removePromoCode(); renderCartPage();" class="text-red-500 hover:text-red-700 font-bold ml-2">✕</button>
+            </div>
+          </div>
+
+          <!-- Calculation Lines -->
+          <div class="space-y-3 text-xs text-stone-600 pb-6 border-b border-stone-200">
+            <div class="flex justify-between">
+              <span>Item Subtotal</span>
+              <span id="summary-subtotal" class="font-bold text-stone-900">$0.00</span>
+            </div>
+            <div id="summary-discount-row" class="hidden flex justify-between text-emerald-700 font-semibold">
+              <span>Promo Discount</span>
+              <span id="summary-discount">-$0.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Insured Global Courier</span>
+              <span id="summary-shipping" class="font-semibold text-stone-900">$0.00</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-stone-400">
+              <span>Estimated Import Duty & VAT</span>
+              <span>Included</span>
+            </div>
+          </div>
+
+          <!-- Total Line -->
+          <div class="flex justify-between items-center py-4 mb-6">
+            <div>
+              <span class="font-bold text-stone-900 block text-base">Estimated Total</span>
+              <span class="text-[10px] text-stone-400">Currency auto-converted</span>
+            </div>
+            <span id="summary-grand-total" class="font-serif-luxury text-2xl font-extrabold text-[#0a2920]">$0.00</span>
+          </div>
+
+          <!-- Checkout Trigger Button -->
+          <button id="checkout-trigger-btn" onclick="openCheckoutModal()" class="w-full py-4 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-stone-950 font-serif-luxury font-bold text-sm tracking-wider rounded-xl shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5 text-stone-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>PROCEED TO SECURE CHECKOUT</span>
+          </button>
+
+          <!-- Security Badges -->
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-center gap-4 text-stone-400 text-xs">
+            <span class="flex items-center gap-1">🔒 256-Bit SSL</span>
+            <span>•</span>
+            <span class="flex items-center gap-1">🦁 100% Genuine Ceylon</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Interactive Checkout Simulation Modal -->
+  <div id="checkout-modal" class="fixed inset-0 bg-stone-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[92vh] overflow-y-auto border border-stone-200 relative animate-fadeIn">
+      
+      <!-- Modal Header -->
+      <div class="p-6 bg-[#0a2920] text-stone-100 flex items-center justify-between sticky top-0 z-10 border-b border-amber-500/20">
+        <div class="flex items-center gap-2">
+          <span class="text-amber-400 text-lg">🛡️</span>
+          <h3 class="font-serif-luxury font-bold text-lg text-amber-200">Insured Worldwide Checkout</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" class="text-stone-400 hover:text-white p-1">✕</button>
+      </div>
+
+      <!-- Checkout Form -->
+      <form id="checkout-form" onsubmit="handlePlaceOrder(event)" class="p-6 sm:p-8 space-y-6">
+        
+        <!-- Step 1: Customer Contact -->
+        <div>
+          <h4 class="font-serif-luxury font-bold text-stone-900 text-sm mb-3 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-[#0a2920] text-amber-300 text-xs flex items-center justify-center">1</span>
+            Contact & Recipient
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-stone-600 font-semibold mb-1">Full Name *</label>
+              <input type="text" required placeholder="e.g. Kasun Fernando" class="w-full p-3 rounded-xl border border-stone-300 focus:outline-none focus:border-emerald-800" />
+            </div>
+            <div>
+              <label class="block text-stone-600 font-semibold mb-1">Email Address (for tracking) *</label>
+              <input type="email" required placeholder="name@example.com" class="w-full p-3 rounded-xl border border-stone-300 focus:outline-none focus:border-emerald-800" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-stone-600 font-semibold mb-1">Mobile / WhatsApp Number *</label>
+              <input type="tel" required placeholder="+94 77 123 4567 / +1 555 019" class="w-full p-3 rounded-xl border border-stone-300 focus:outline-none focus:border-emerald-800" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Shipping Destination -->
+        <div class="pt-4 border-t border-stone-200">
+          <h4 class="font-serif-luxury font-bold text-stone-900 text-sm mb-3 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-[#0a2920] text-amber-300 text-xs flex items-center justify-center">2</span>
+            Delivery Address
+          </h4>
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-stone-600 font-semibold mb-1">Street Address *</label>
+              <input type="text" required placeholder="123 High Street, Estate Bungalow / Apt" class="w-full p-3 rounded-xl border border-stone-300 focus:outline-none focus:border-emerald-800" />
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-stone-600 font-semibold mb-1">City *</label>
+                <input type="text" required placeholder="Colombo / London" class="w-full p-3 rounded-xl border border-stone-300 focus:outline-none focus:border-emerald-800" />
+              </div>
+              <div>
+                <label class="block text-stone-600 font-semibold mb-1">Postal Code *</label>
+                <input type="text" required placeholder="00100 / SW1A 1AA" class="w-full p-3 rounded-xl border border-stone-300 focus:outline-none focus:border-emerald-800" />
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <label class="block text-stone-600 font-semibold mb-1">Country *</label>
+                <select class="w-full p-3 rounded-xl border border-stone-300 bg-white focus:outline-none focus:border-emerald-800 font-medium">
+                  <option value="LK">Sri Lanka (Local Express)</option>
+                  <option value="US">United States</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="AU">Australia</option>
+                  <option value="DE">Germany</option>
+                  <option value="JP">Japan</option>
+                  <option value="AE">United Arab Emirates</option>
+                  <option value="OTHER">Other Global Destination</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Payment Method -->
+        <div class="pt-4 border-t border-stone-200">
+          <h4 class="font-serif-luxury font-bold text-stone-900 text-sm mb-3 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-[#0a2920] text-amber-300 text-xs flex items-center justify-center">3</span>
+            Payment Simulation
+          </h4>
+          <div class="space-y-2.5">
+            <label class="flex items-center justify-between p-3.5 border rounded-2xl cursor-pointer border-[#0a2920] bg-emerald-50/50">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="payment-method" value="card" checked class="text-emerald-800" />
+                <span class="text-xs font-bold text-stone-900">Credit / Debit Card (Visa, Mastercard, Amex)</span>
+              </div>
+              <span class="text-xs text-stone-500">Instant</span>
+            </label>
+
+            <label class="flex items-center justify-between p-3.5 border rounded-2xl cursor-pointer border-stone-200 hover:border-stone-300">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="payment-method" value="paypal" class="text-emerald-800" />
+                <span class="text-xs font-bold text-stone-900">PayPal Express Checkout</span>
+              </div>
+              <span class="text-xs text-stone-500">Global</span>
+            </label>
+
+            <label class="flex items-center justify-between p-3.5 border rounded-2xl cursor-pointer border-stone-200 hover:border-stone-300">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="payment-method" value="cod" class="text-emerald-800" />
+                <span class="text-xs font-bold text-stone-900">Cash on Delivery / Direct Bank Wire (Sri Lanka)</span>
+              </div>
+              <span class="text-xs text-stone-500">Local</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4 border-t border-stone-200 flex flex-col gap-3">
+          <button type="submit" class="w-full py-4 bg-[#0a2920] hover:bg-[#154737] text-amber-300 font-serif-luxury font-bold text-sm tracking-wider rounded-xl shadow-xl transition-all border border-amber-500/30 flex items-center justify-center gap-2">
+            <span>CONFIRM & PLACE TEA ORDER</span>
+            <span id="modal-order-total" class="bg-amber-400/20 px-2 py-0.5 rounded text-amber-200 text-xs"></span>
+          </button>
+          <button type="button" onclick="closeCheckoutModal()" class="text-xs text-stone-500 hover:text-stone-800 text-center">
+            Return to Cart
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Success Confirmation Modal -->
+  <div id="order-success-modal" class="fixed inset-0 bg-stone-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-8 text-center border border-amber-500/30 animate-scaleUp">
+      <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-800 mx-auto flex items-center justify-center text-4xl mb-4 shadow-inner">
+        🦁
+      </div>
+      <span class="text-xs uppercase font-bold tracking-widest text-amber-700 block mb-1">Ayubowan! Order Confirmed</span>
+      <h3 class="font-serif-luxury text-2xl font-bold text-stone-900 mb-2">Your Ceylon Tea is Being Prepared</h3>
+      <p class="text-xs text-stone-600 leading-relaxed mb-6">
+        Thank you for choosing pure single-origin Ceylon Royale. Your order has been registered and is being hand-packed at our Nuwara Eliya curing facility in airtight oxygen-barrier tins.
+      </p>
+
+      <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200 text-left text-xs space-y-2 mb-6">
+        <div class="flex justify-between">
+          <span class="text-stone-500">Order Reference:</span>
+          <strong id="success-order-id" class="text-stone-900 font-mono"></strong>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-500">Status:</span>
+          <span class="text-emerald-700 font-bold">● Preparing for Express Dispatch</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-500">Estimated Delivery:</span>
+          <span class="text-stone-900 font-semibold">3-5 Business Days (Air Express)</span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <a href="shop.html" class="block w-full py-3.5 bg-[#0a2920] hover:bg-[#154737] text-amber-300 font-bold text-xs rounded-xl shadow transition-all">
+          Explore More Ceylon Blends
+        </a>
+        <button onclick="closeSuccessModal()" class="block w-full py-2.5 text-xs text-stone-500 hover:text-stone-800 underline">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master Footer -->
+  <footer class="bg-[#051813] text-stone-400 text-sm pt-16 pb-12 border-t border-amber-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center font-serif-luxury font-bold text-stone-950 text-lg">CR</div>
+          <span class="font-serif-luxury text-xl font-bold text-amber-200">CEYLON ROYALE</span>
+        </div>
+        <p class="text-xs text-stone-400 leading-relaxed pr-6">
+          Cultivating, crafting and sharing 100% Pure Ceylon Single-Origin teas since 1867. Proudly carrying the authentic Ceylon Lion Logo emblem authorized by the Sri Lanka Tea Board.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Tea Collections</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="shop.html?category=black" class="hover:text-amber-300">High Grown Black Tea</a></li>
+          <li><a href="shop.html?category=white" class="hover:text-amber-300">Imperial Silver Tips</a></li>
+          <li><a href="shop.html?category=green" class="hover:text-amber-300">Pan-Fired Ceylon Green</a></li>
+          <li><a href="shop.html?category=spiced" class="hover:text-amber-300">Ceylon Spiced Chai</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Connoisseur Guide</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="heritage.html" class="hover:text-amber-300">The 1867 Ceylon Heritage</a></li>
+          <li><a href="brewing-guide.html" class="hover:text-amber-300">Interactive Steep Timer</a></li>
+          <li><a href="heritage.html#terroirs" class="hover:text-amber-300">7 Agro-Climatic Elevations</a></li>
+          <li><a href="contact.html#faq" class="hover:text-amber-300">Shipping & FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-stone-200 font-serif-luxury text-sm font-bold uppercase tracking-wider mb-4">Estate Concierge</h4>
+        <div class="space-y-2 text-xs text-stone-400">
+          <p>Nuwara Eliya 22200, Sri Lanka</p>
+          <p>concierge@ceylonroyale.lk</p>
+          <p>+94 (11) 789 2400</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+      <p>© 2026 CEYLON ROYALE TEA BLENDS (PVT) LTD. ALL RIGHTS RESERVED.</p>
+      <span>Certified 100% Pure Ceylon Lion Logo</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartPage();
+    });
+
+    window.addEventListener('cart-updated', () => {
+      renderCartPage();
+    });
+
+    window.addEventListener('currency-changed', () => {
+      renderCartPage();
+    });
+
+    function renderCartPage() {
+      const cart = getCart();
+      const totals = getCartTotals();
+
+      const itemsContainer = document.getElementById('cart-page-items');
+      const emptyContainer = document.getElementById('cart-page-empty');
+      const actionsBar = document.getElementById('cart-actions-bar');
+      const checkoutBtn = document.getElementById('checkout-trigger-btn');
+
+      // Free shipping bar
+      const progressText = document.getElementById('shipping-progress-text');
+      const progressFill = document.getElementById('shipping-progress-fill');
+
+      if (totals.freeShippingEligible) {
+        progressText.innerHTML = `🎉 <strong>Congratulations!</strong> You've unlocked Free Worldwide Express Shipping!`;
+        progressFill.style.width = '100%';
+        progressFill.classList.replace('from-amber-500', 'from-emerald-500');
+      } else {
+        const pct = Math.min(100, Math.round((totals.subtotalUSD / 50.0) * 100));
+        progressText.innerHTML = `Add <strong>${formatPrice(totals.amountNeededForFreeShipping)}</strong> more to unlock <strong>Free Worldwide Shipping</strong>!`;
+        progressFill.style.width = `${pct}%`;
+      }
+
+      // Check empty
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = '';
+        emptyContainer.classList.remove('hidden');
+        actionsBar.classList.add('hidden');
+        checkoutBtn.disabled = true;
+        checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      } else {
+        emptyContainer.classList.add('hidden');
+        actionsBar.classList.remove('hidden');
+        checkoutBtn.disabled = false;
+        checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+        itemsContainer.innerHTML = cart.map(item => `
+          <div class="py-5 sm:grid sm:grid-cols-12 sm:gap-4 items-center flex flex-col gap-4">
+            
+            <!-- Product Info -->
+            <div class="sm:col-span-6 flex items-center gap-4 w-full">
+              <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-2xl object-cover border border-amber-900/10 flex-shrink-0" />
+              <div class="min-w-0 flex-1">
+                <span class="text-[10px] uppercase font-bold text-amber-700 tracking-wider block">${item.elevation.split('(')[0]}</span>
+                <h4 class="font-serif-luxury font-bold text-sm text-stone-900 truncate">
+                  <a href="product-details.html?id=${item.productId}" class="hover:text-emerald-800">${item.name}</a>
+                </h4>
+                <p class="text-xs text-stone-500 mt-0.5">${item.size}</p>
+                <button onclick="removeCartItem('${item.id}'); renderCartPage();" class="text-[11px] text-stone-400 hover:text-red-600 transition-colors mt-1 block">
+                  Remove
+                </button>
+              </div>
+            </div>
+
+            <!-- Unit Price -->
+            <div class="sm:col-span-2 text-center w-full flex sm:block justify-between text-xs">
+              <span class="sm:hidden text-stone-400">Unit Price:</span>
+              <span class="font-semibold text-stone-700">${formatPrice(item.unitPriceUSD)}</span>
+            </div>
+
+            <!-- Quantity Modifier -->
+            <div class="sm:col-span-2 flex items-center justify-center w-full">
+              <div class="flex items-center border border-stone-300 rounded-xl overflow-hidden bg-stone-50">
+                <button onclick="updateCartItemQty('${item.id}', -1); renderCartPage();" class="w-8 h-8 hover:bg-stone-200 font-bold text-stone-700 flex items-center justify-center text-xs">-</button>
+                <span class="w-8 text-center text-xs font-bold text-stone-900">${item.quantity}</span>
+                <button onclick="updateCartItemQty('${item.id}', 1); renderCartPage();" class="w-8 h-8 hover:bg-stone-200 font-bold text-stone-700 flex items-center justify-center text-xs">+</button>
+              </div>
+            </div>
+
+            <!-- Line Total -->
+            <div class="sm:col-span-2 text-right w-full flex sm:block justify-between text-xs">
+              <span class="sm:hidden text-stone-400">Subtotal:</span>
+              <span class="font-serif-luxury font-bold text-base text-emerald-950">${formatPrice(item.unitPriceUSD * item.quantity)}</span>
+            </div>
+
+          </div>
+        `).join('');
+      }
+
+      // Summary lines
+      document.getElementById('summary-subtotal').textContent = formatPrice(totals.subtotalUSD);
+
+      const discountRow = document.getElementById('summary-discount-row');
+      const discountVal = document.getElementById('summary-discount');
+      const activePromoTag = document.getElementById('active-promo-tag');
+      const activePromoName = document.getElementById('active-promo-name');
+
+      if (totals.appliedPromo && totals.discountUSD > 0) {
+        discountRow.classList.remove('hidden');
+        discountVal.textContent = `-${formatPrice(totals.discountUSD)}`;
+        activePromoTag.classList.remove('hidden');
+        activePromoName.textContent = `Active Voucher: ${totals.appliedPromo.code} (${totals.appliedPromo.percent}% OFF)`;
+      } else {
+        discountRow.classList.add('hidden');
+        activePromoTag.classList.add('hidden');
+      }
+
+      const shippingLabel = document.getElementById('summary-shipping');
+      if (totals.subtotalUSD === 0) {
+        shippingLabel.textContent = formatPrice(0);
+      } else if (totals.freeShippingEligible) {
+        shippingLabel.innerHTML = `<span class="text-emerald-700 font-bold">FREE</span>`;
+      } else {
+        shippingLabel.textContent = formatPrice(totals.standardShippingUSD);
+      }
+
+      document.getElementById('summary-grand-total').textContent = formatPrice(totals.grandTotalUSD);
+      document.getElementById('modal-order-total').textContent = formatPrice(totals.grandTotalUSD);
+    }
+
+    function handleApplyPromo() {
+      const code = document.getElementById('promo-input').value;
+      if (applyPromoCode(code)) {
+        document.getElementById('promo-input').value = '';
+        renderCartPage();
+      }
+    }
+
+    function handleClearCart() {
+      if (confirm('Are you sure you wish to clear your Tea Chest?')) {
+        saveCart([]);
+        renderCartPage();
+      }
+    }
+
+    // Modal logic
+    function openCheckoutModal() {
+      const cart = getCart();
+      if (cart.length === 0) {
+        showToast('Your tea chest is empty!', 'error');
+        return;
+      }
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').classList.add('hidden');
+    }
+
+    function handlePlaceOrder(e) {
+      e.preventDefault();
+      closeCheckoutModal();
+
+      const orderRef = 'CR-' + Math.floor(100000 + Math.random() * 900000);
+      document.getElementById('success-order-id').textContent = orderRef;
+
+      // Empty cart
+      saveCart([]);
+      renderCartPage();
+
+      // Show success modal
+      document.getElementById('order-success-modal').classList.remove('hidden');
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('order-success-modal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

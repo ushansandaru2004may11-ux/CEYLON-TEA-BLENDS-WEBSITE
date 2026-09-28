@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Ceylon Tea Blends</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: { colors: { 'tea-green': '#4a7c59', 'tea-dark': '#2c4c3b', 'tea-gold': '#d4af37', 'tea-light': '#f4f1ea' } }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-tea-light text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 text-2xl font-serif font-bold text-tea-dark">
+                        <i class="fas fa-leaf text-tea-green"></i> CEYLON TEA
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-tea-green transition px-1 py-2">Home</a>
+                    <a href="products.html" class="text-tea-green font-semibold border-b-2 border-tea-green px-1 py-2">Products</a>
+                    <a href="about.html" class="text-gray-600 hover:text-tea-green transition px-1 py-2">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-tea-green transition px-1 py-2">Contact</a>
+                    <a href="#" class="text-gray-600 hover:text-tea-green"><i class="fas fa-shopping-cart text-xl"></i></a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-tea-dark focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-gray-600">Home</a>
+                <a href="products.html" class="block px-3 py-2 text-tea-green font-semibold">Products</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-600">About Us</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="pt-32 pb-12 bg-tea-dark text-white text-center">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Our Premium Blends</h1>
+        <p class="text-gray-300 max-w-2xl mx-auto px-4">Discover our collection of the finest single-origin Ceylon teas, carefully crafted for perfection.</p>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cad?q=80&w=800" alt="Classic Black Tea" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-tea-gold text-white text-xs font-bold px-3 py-1 rounded-full">Bestseller</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-serif font-bold mb-2">Classic Black Tea</h3>
+                    <p class="text-gray-600 text-sm mb-4">Robust, full-bodied black tea from the Dimbula region. Perfect for your morning cup.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-tea-dark">$14.99</span>
+                        <button class="add-to-cart bg-tea-green hover:bg-tea-dark text-white px-4 py-2 rounded transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1627492275512-08a5d49a81cb?q=80&w=800" alt="Emerald Green Tea" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-serif font-bold mb-2">Emerald Green Tea</h3>
+                    <p class="text-gray-600 text-sm mb-4">Light, refreshing green tea packed with antioxidants. Delicate flavor notes.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-tea-dark">$16.99</span>
+                        <button class="add-to-cart bg-tea-green hover:bg-tea-dark text-white px-4 py-2 rounded transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=800" alt="Silver Tips White Tea" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-black text-white text-xs font-bold px-3 py-1 rounded-full">Premium</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-serif font-bold mb-2">Silver Tips White Tea</h3>
+                    <p class="text-gray-600 text-sm mb-4">Rare, pure white tea made exclusively from unopened buds. Extremely subtle flavor.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-tea-dark">$29.99</span>
+                        <button class="add-to-cart bg-tea-green hover:bg-tea-dark text-white px-4 py-2 rounded transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=800" alt="Royal Earl Grey" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-serif font-bold mb-2">Royal Earl Grey</h3>
+                    <p class="text-gray-600 text-sm mb-4">Premium Ceylon black tea infused with natural bergamot oil for a citrusy finish.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-tea-dark">$15.99</span>
+                        <button class="add-to-cart bg-tea-green hover:bg-tea-dark text-white px-4 py-2 rounded transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Product 5 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=800" alt="Spiced Chai Blend" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-serif font-bold mb-2">Spiced Chai Blend</h3>
+                    <p class="text-gray-600 text-sm mb-4">A warming mix of strong black tea and traditional Sri Lankan spices (cardamom, clove, cinnamon).</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-tea-dark">$17.50</span>
+                        <button class="add-to-cart bg-tea-green hover:bg-tea-dark text-white px-4 py-2 rounded transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Product 6 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1594910041228-5757962649a3?q=80&w=800" alt="Oolong Reserve" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-serif font-bold mb-2">Oolong Reserve</h3>
+                    <p class="text-gray-600 text-sm mb-4">Semi-oxidized tea offering a complex balance between the freshness of green and strength of black tea.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-tea-dark">$22.00</span>
+                        <button class="add-to-cart bg-tea-green hover:bg-tea-dark text-white px-4 py-2 rounded transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-tea-dark text-white pt-12 pb-8 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="text-2xl font-serif font-bold text-tea-gold mb-2">CEYLON TEA</h4>
+            <p class="text-gray-400 text-sm">&copy; 2024 Ceylon Tea Blends. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

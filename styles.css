@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-bg {
+    background-image: url('C:/Users/Ushan/.gemini/antigravity/brain/f09b097e-cc0e-49b0-850f-a463a58723b0/hero_ceylon_tea_1790505464262.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
